@@ -26,6 +26,8 @@
         <link rel="stylesheet" th:href="@{/css/style.default.css}" id="theme-stylesheet">
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" th:href="@{/css/custom.css}">
+        <link rel="stylesheet" th:href="@{/css/fontastic.css}">
+        <link rel="stylesheet" th:href="@{/icons-reference/styles.css}">
         <!-- Favicon-->
         <link rel="shortcut icon" th:href="@{/img/favicon.ico}">
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -53,7 +55,7 @@
             <!-- Sidebar Header    -->
             <div class="sidenav-header d-flex align-items-center justify-content-center">
                 <!-- User Info-->
-                <div class="sidenav-header-inner text-center"><img src="img/avatar-7.jpg" alt="person"
+                <div class="sidenav-header-inner text-center"><img th:src="@{/img/avatar-7.jpg}" alt="person"
                                                                    class="img-fluid rounded-circle">
                     <h2 class="h5" th:text="${session.username}"></h2><span>个人签名</span>
                 </div>
@@ -69,7 +71,7 @@
                     <li th:class="${activeUrl=='index' ? 'active' : ''}"><a th:href="@{/toIndex}"> <i
                             class="icon-home"></i>主页 </a></li>
                     <li th:class="${activeUrl=='tables' ? 'active' : ''}"><a th:href="@{/toTables}"> <i
-                            class="icon-grid"></i>表格 </a></li>
+                            class="icon-grid"></i>清单 </a></li>
                     <li th:class="${activeUrl=='forms' ? 'active' : ''}">
                         <a th:href="@{/toForms}">
                             <i class="icon-form"></i>
@@ -118,7 +120,7 @@
             <div class="container-fluid">
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i
-                            class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+                            class="icon-bars"> </i></a><a th:href="@{/toIndex}" class="navbar-brand">
                         <div class="brand-text d-none d-md-inline-block"><span>About</span>
                             <strong class="text-primary">My Life</strong></div>
                     </a></div>
@@ -171,7 +173,7 @@
                                 class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
                             <ul aria-labelledby="notifications" class="dropdown-menu">
                                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                    <div class="msg-profile"><img src="img/avatar-1.jpg" alt="..."
+                                    <div class="msg-profile"><img th:src="@{/img/avatar-1.jpg}" alt="..."
                                                                   class="img-fluid rounded-circle"></div>
                                     <div class="msg-body">
                                         <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days
@@ -179,7 +181,7 @@
                                     </div>
                                 </a></li>
                                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                    <div class="msg-profile"><img src="img/avatar-2.jpg" alt="..."
+                                    <div class="msg-profile"><img th:src="@{/img/avatar-2.jpg}" alt="..."
                                                                   class="img-fluid rounded-circle"></div>
                                     <div class="msg-body">
                                         <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3
@@ -187,7 +189,7 @@
                                     </div>
                                 </a></li>
                                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                    <div class="msg-profile"><img src="img/avatar-3.jpg" alt="..."
+                                    <div class="msg-profile"><img th:src="@{/img/avatar-3.jpg}" alt="..."
                                                                   class="img-fluid rounded-circle"></div>
                                     <div class="msg-body">
                                         <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3
@@ -203,14 +205,14 @@
                                                          data-toggle="dropdown" aria-haspopup="true"
                                                          aria-expanded="false"
                                                          class="nav-link language dropdown-toggle"><img
-                                src="img/flags/16/GB.png" alt="English"><span
+                                th:src="@{/img/flags/16/GB.png}" alt="English"><span
                                 class="d-none d-sm-inline-block">English</span></a>
                             <ul aria-labelledby="languages" class="dropdown-menu">
-                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png"
+                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img th:src="@{/img/flags/16/DE.png}"
                                                                                            alt="English"
                                                                                            class="mr-2"><span>German</span></a>
                                 </li>
-                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png"
+                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img th:src="@{/img/flags/16/FR.png}"
                                                                                            alt="English"
                                                                                            class="mr-2"><span>French                                                         </span></a>
                                 </li>
@@ -235,7 +237,7 @@
             <div th:switch="${currentMenu}">
                 <li class="breadcrumb-item active" th:case="forms">Forms</li>
                 <li class="breadcrumb-item active" th:case="charts">图示</li>
-                <li class="breadcrumb-item active" th:case="tables">表格</li>
+                <li class="breadcrumb-item active" th:case="tables">清单</li>
             </div>
         </ul>
     </div>
