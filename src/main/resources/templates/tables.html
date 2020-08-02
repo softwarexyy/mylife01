@@ -70,7 +70,7 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Striped Table</h4>
+                            <h4>喝水了吗</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -78,29 +78,20 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
+                                        <th>人</th>
+                                        <th>喝水量</th>
+                                        <th>时间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                    <tr th:each="book:${books}">
+                                        <td th:text="${book.id}"></td>
+                                        <td th:text="${book.name}"></td>
+                                        <td th:text="${book.desc}"></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-success" th:href="@{/toUpdateBookPage/}+${book.id}">维护</a>
+                                            <a class="btn btn-sm btn-danger" th:href="@{/delBook/}+${book.id}">删除</a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

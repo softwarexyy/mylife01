@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.life.dao.BookMapper">
+
+    <!-- 解决数据库表字段和实体类字段不一致：
+        通过<resultMap> ,需要注意的是  resultMap属性值 和 resultMap标签中id属性值相等
+        resultMap标签中，其中property为实体类属性名，column为数据表中的属性
+    -->
+
+    <!-- 字段映射： property:java实体类字段名 column:数据库表字段名 -->
+    <resultMap id="drink_resultmap" type="com.life.entities.DrinkedWater">
+        <result property="id" column="book_id"/>
+    </resultMap>
+
+    <!-- 查找喝水记录列表 -->
+    <select id="selectDrinkedWater" resultType="com.life.entities.DrinkedWater" resultMap="drink_resultmap">
+        select * from book;
+    </select>
+
+</mapper>
