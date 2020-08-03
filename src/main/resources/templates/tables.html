@@ -70,7 +70,8 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>喝水了吗</h4>
+                            <a class="h4" >喝水记录</a>
+                            <a class="btn btn-sm btn-success pull-right" th:href="@{/toAddDrinkPage}">添加喝水记录</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -78,19 +79,21 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>人</th>
-                                        <th>喝水量</th>
+                                        <th>喝水人</th>
+                                        <th>喝水量(mL)</th>
                                         <th>时间</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="book:${books}">
-                                        <td th:text="${book.id}"></td>
-                                        <td th:text="${book.name}"></td>
-                                        <td th:text="${book.desc}"></td>
+                                    <tr th:each="drink:${drinks}">
+                                        <td th:text="${drink.id}"></td>
+                                        <td th:text="${drink.drinkName}"></td>
+                                        <td th:text="${drink.drinkAmount}"></td>
+                                        <td th:text="${drink.drinkTime}"></td>
                                         <td>
-                                            <a class="btn btn-sm btn-success" th:href="@{/toUpdateBookPage/}+${book.id}">维护</a>
-                                            <a class="btn btn-sm btn-danger" th:href="@{/delBook/}+${book.id}">删除</a>
+                                            <a class="btn btn-sm btn-success" th:href="@{/toUpdateDrinkPage/}+${drink.id}">维护</a>
+                                            <a class="btn btn-sm btn-danger" th:href="@{/delDrink/}+${drink.id}">删除</a>
                                         </td>
                                     </tr>
                                     </tbody>

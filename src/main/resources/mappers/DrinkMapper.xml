@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.life.dao.BookMapper">
+<mapper namespace="com.life.dao.DrinkMapper">
 
     <!-- 解决数据库表字段和实体类字段不一致：
         通过<resultMap> ,需要注意的是  resultMap属性值 和 resultMap标签中id属性值相等
@@ -9,12 +9,40 @@
 
     <!-- 字段映射： property:java实体类字段名 column:数据库表字段名 -->
     <resultMap id="drink_resultmap" type="com.life.entities.DrinkedWater">
-        <result property="id" column="book_id"/>
+        <result property="id" column="id"/>
+        <result property="drinkName" column="drink_person"/>
+        <result property="drinkTime" column="drink_time"/>
+        <result property="drinkAmount" column="drink_amount"/>
     </resultMap>
 
     <!-- 查找喝水记录列表 -->
     <select id="selectDrinkedWater" resultType="com.life.entities.DrinkedWater" resultMap="drink_resultmap">
-        select * from book;
+        select * from drink_water;
     </select>
+
+    <select id="getOneDrinkById" parameterType="java.lang.Integer" resultMap="drink_resultmap">
+        select * from drink_water where id=#{id}
+    </select>
+
+    <!-- 新增喝水记录 -->
+    <insert id="insertDrink" parameterType="com.life.entities.DrinkedWater">
+        insert into drink_water(drink_person, drink_time, drink_amount)
+        values (#{drinkName}, #{drinkTime}, #{drinkAmount})
+    </insert>
+
+    <!-- 更新喝水记录 -->
+    <update id="updateDrink"  parameterType="com.life.entities.DrinkedWater">
+        update
+            drink_water
+        SET
+            drink_person=#{drinkName}, drink_time=#{drinkTime}, drink_amount=#{drinkAmount}
+        where
+            id=#{id}
+    </update>
+
+    <!-- 删除喝水记录 -->
+    <delete id="deleteDrink" parameterType="java.lang.Integer">
+        delete from drink_water where id=#{id}
+    </delete>
 
 </mapper>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{commons/common::htmlHead}"/>
+<body>
+<!-- Side Navbar -->
+<div th:replace="~{commons/common::sideBar(activeUrl='tables')}"/>
+<div class="page">
+    <!-- navbar-->
+    <div th:replace="~{commons/common::topBar}"/>
+    <!-- Breadcrumb-->
+    <div th:replace="~{commons/common::backToIndexBar(currentMenu='tables')}"/>
+    <section class="forms">
+        <div class="container-fluid">
+            <!-- Page Header-->
+            <header>
+                <h1 class="h3 display">Forms </h1>
+            </header>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h4>喝水记录</h4>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/updateDrink}" method="post">
+                                <!-- 隐藏域-->
+                                <input type="hidden" name="id" th:value="${drink.id}" class="form-control">
+                                <div class="form-group">
+                                    <label>喝水人</label>
+                                    <input type="text" name="drinkName" th:value="${drink.drinkName}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>喝水量</label>
+                                    <input type="text" name="drinkAmount" th:value="${drink.drinkAmount}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>喝水时间</label>
+                                    <input type="text" name="drinkTime" th:value="${drink.drinkTime}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="确认修改" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div th:replace="~{commons/common::footBar}"/>
+</div>
+</body>
+</html>

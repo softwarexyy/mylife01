@@ -10,4 +10,8 @@ import java.util.Collection;
 @Repository
 public interface DrinkMapper {
     Collection<DrinkedWater> selectDrinkedWater();
+    DrinkedWater getOneDrinkById(Integer id);
+    int insertDrink(DrinkedWater drinkedWater);
+    int updateDrink(DrinkedWater drinkedWater);
+    int deleteDrink(Integer id);
 }
